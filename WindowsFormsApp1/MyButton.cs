@@ -33,6 +33,14 @@ namespace WindowsFormsApp1 {
             HeightMultiplier = 10;
         }
 
+        public MyButton(bool turnedOn, Color backColor, Color onColor, Color offColor, Color circleColor) {
+            TurnedOn = turnedOn;
+            BackColor = backColor;
+            OnColor = onColor;
+            OffColor = offColor;
+            CircleColor = circleColor;
+        }
+
         private void Button_Click(object sender, EventArgs e) {
            TurnedOn = !TurnedOn;
            
@@ -42,13 +50,23 @@ namespace WindowsFormsApp1 {
         public void Draw(object sender, PaintEventArgs e) {
             var a = this.CreateGraphics();
             
-            a.FillRectangle(new SolidBrush(TurnedOn == true ? OnColor : OffColor), new Rectangle( Size.Width / WidthMultiplier, Size.Width / WidthMultiplier, Size.Width - Size.Width / HeightMultiplier, Size.Height - Size.Width / HeightMultiplier));
+            a.FillRectangle(new SolidBrush(TurnedOn == true ? OnColor : OffColor),
+                new Rectangle( Size.Width / WidthMultiplier, Size.Width / WidthMultiplier, 
+                Size.Width - Size.Width / HeightMultiplier, Size.Height - Size.Width / HeightMultiplier));
 
             if (TurnedOn == true) {
-                  a.FillEllipse(new SolidBrush(CircleColor), new Rectangle( + Size.Width / WidthMultiplier,  Size.Width / WidthMultiplier, Size.Height - Size.Width / HeightMultiplier, Size.Height - Size.Width / HeightMultiplier));
+                  a.FillEllipse(new SolidBrush(CircleColor), 
+                      new Rectangle(Size.Width / WidthMultiplier,  
+                      Size.Width / WidthMultiplier, 
+                      Size.Height - Size.Width / HeightMultiplier, 
+                      Size.Height - Size.Width / HeightMultiplier));
             }
             else {
-                a.FillEllipse(new SolidBrush(CircleColor), new Rectangle( Size.Width - Size.Height + Size.Width / WidthMultiplier, Size.Width / WidthMultiplier, Size.Height - Size.Width / HeightMultiplier, Size.Height - Size.Width / HeightMultiplier));
+                a.FillEllipse(new SolidBrush(CircleColor),
+                    new Rectangle( Size.Width - Size.Height + Size.Width / WidthMultiplier, 
+                    Size.Width / WidthMultiplier, 
+                    Size.Height - Size.Width / HeightMultiplier, 
+                    Size.Height - Size.Width / HeightMultiplier));
             }
         }
     }
