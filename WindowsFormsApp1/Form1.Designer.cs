@@ -41,9 +41,9 @@ namespace WindowsFormsApp1 {
 
 
             this.button1 = new MyButton();
-            this.button1.TurnedOn = true;
             this.button1.Location = new Point(20, 20);
             this.button1.Size = new Size(170, 80);
+           
            
            
 
